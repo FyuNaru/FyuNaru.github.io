@@ -264,9 +264,15 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "hexo">hexo</a>
+    
+</div>
+                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">0</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">424</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -395,7 +401,18 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        
+        <p><strong>解决办法：从node.js开始，将整个hexo重新装一遍（包括主题和配置文件），是最快的解决方法。</strong></p>
+<p><strong>所花时长大约3小时。</strong></p>
+<p>（因为个人需要，重新注册了github账号，将博客所在的库迁移到了新的github账号上。</p>
+<p>这里的三小时包括重新安装node.js，git，为新的github账号配置ssh，安装hexo，重新选择主题，重写hexo配置文件和主题配置文件，将原先域名绑定到新的github库中，解决图片加载问题。</p>
+<p>如果不需要另外重新注册github账号，那么时间可能将会大大减少。）</p>
+<hr>
+<p>下面记录本次完全重装hexo过程中参考的博客。</p>
+<p>这是我第一次搭建hexo博客时做的记录，也是这次我重新搭建的主要参考对象。<br><a href="https://fyunaru.cn/2019/07/01/windows下hexo+github搭建个人博客/">windows下用hexo+github搭建个人博客</a></p>
+<p>这篇博客作用是了解将原先的博客文件夹删除时需要保留哪些文件<br><a href="https://www.cnblogs.com/study-everyday/p/8902136.html" target="_blank" rel="noopener">换了电脑如何使用hexo继续写博客</a></p>
+<p>这篇文章用于解决在同一台电脑上之前登陆过A_github账号，绑定了ssh并向其push，随后想要向B_github账号push时出错的问题，是我查到的所有博客中解决方法最简洁的。<br><a href="https://blog.csdn.net/klxh2009/article/details/76019742" target="_blank" rel="noopener">解决 github push failed (remote: Permission to userA/repo.git denied to userB.)</a></p>
+<p>这篇博客用于解决图片无法显示的问题，试了几个只有这个有效（另外最后插入图片时并不一定需要用文章中提到的标签方法，用原先的markdown方法也是可以的）<br><a href="https://blog.csdn.net/weixin_30734435/article/details/98497054" target="_blank" rel="noopener">解决Hexo图片无法显示问题</a></p>
+
     </article>
     <!-- license  -->
     
@@ -403,7 +420,7 @@ height:50vh;
             <p>原文作者：<a href="http://fyunaru.cn">王金翼</a>
             <p>原文链接：<a href="http://fyunaru.cn/2019/11/27/hexo-g-%E7%94%9F%E6%88%90%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%A7%E5%B0%8F%E4%B8%BA0kb%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">http://fyunaru.cn/2019/11/27/hexo-g-%E7%94%9F%E6%88%90%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%A7%E5%B0%8F%E4%B8%BA0kb%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</a>
             <p>发表日期：<a href="http://fyunaru.cn/2019/11/27/hexo-g-%E7%94%9F%E6%88%90%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%A7%E5%B0%8F%E4%B8%BA0kb%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">November 27th 2019, 4:12:13 pm</a>
-            <p>更新日期：<a href="http://fyunaru.cn/2019/11/27/hexo-g-%E7%94%9F%E6%88%90%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%A7%E5%B0%8F%E4%B8%BA0kb%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">November 27th 2019, 4:12:13 pm</a>
+            <p>更新日期：<a href="http://fyunaru.cn/2019/11/27/hexo-g-%E7%94%9F%E6%88%90%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%A7%E5%B0%8F%E4%B8%BA0kb%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">November 27th 2019, 5:41:33 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -733,6 +750,10 @@ top:50vh;
     
     
     
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 15
@@ -835,13 +856,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
+        <span class="sidebar-tag-name" data-tags="周记"><span class="iconfont-archer">&#xe606;</span>周记</span>
+    
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="期末"><span class="iconfont-archer">&#xe606;</span>期末</span>
     
         <span class="sidebar-tag-name" data-tags="哈工大"><span class="iconfont-archer">&#xe606;</span>哈工大</span>
-    
-        <span class="sidebar-tag-name" data-tags="周记"><span class="iconfont-archer">&#xe606;</span>周记</span>
     
         <span class="sidebar-tag-name" data-tags="软件构造"><span class="iconfont-archer">&#xe606;</span>软件构造</span>
     
@@ -886,9 +907,9 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="hexo"><span class="iconfont-archer">&#xe60a;</span>hexo</span>
     
-        <span class="sidebar-category-name" data-categories="考试总结"><span class="iconfont-archer">&#xe60a;</span>考试总结</span>
-    
         <span class="sidebar-category-name" data-categories="周记"><span class="iconfont-archer">&#xe60a;</span>周记</span>
+    
+        <span class="sidebar-category-name" data-categories="考试总结"><span class="iconfont-archer">&#xe60a;</span>考试总结</span>
     
         <span class="sidebar-category-name" data-categories="matlab"><span class="iconfont-archer">&#xe60a;</span>matlab</span>
     
