@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>fyunaru&#39;s blog</title>
+    <title>哈工大2019算法期末 · fyunaru&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >FyuNaru&#39;s blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">哈工大2019算法期末</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>FyuNaru's blog.</a>
 </header>
@@ -220,24 +231,78 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            哈工大2019算法期末
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "算法">算法</a>
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "期末">期末</a>
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "哈工大">哈工大</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.5k</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/07/02</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,384 +403,91 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/27/hello-world/" >
-            
-                <span>Hello World</span>
-        </a>
-        <div class="abstract-content">
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new "My New Post"
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>对于工大的专业课考试，考试范围和往年题型是最重要的两个东西。<br>然而算法课考试，老师在考试之前没说题型，甚至连考试范围都说的很模糊；智障记忆那里卖的题差不多又都是将近10年以前的题，题型上可能有一些出入，网上能够搜到的也只有一篇13年的题型介绍（直接百度即可搜到）。因此这些都给我们的考前复习（预习）带来了很大的不便。<br>因此在这里凭记忆将今年的期末考试题型记录一下，希望对以后的学弟学妹们有帮助。</p>
+<h2 id="试卷构成"><a href="#试卷构成" class="headerlink" title="试卷构成"></a>试卷构成</h2><ol>
+<li><p>判断题（10 * 2 分）  </p>
+<p> 印象中有几道题不是很简单，考的知识点比较细。<strong>涵盖的知识点主要有第一章算法的基本概念，排序算法的理解，图算法，字符串算法，搜索等。总之就是除了分治贪心动态规划之外的其他几章知识点的考察（但不能保证分治贪心动态规划不考）</strong>，涵盖的还算全面。</p>
+<p> 能记得的有以下几道题：  </p>
+<p> A*算法一定可以得到最优解？<br> 调试程序可以证明算法的正确性？<br> dijkstra算法是贪心算法？<br> 如果一个基于比较的排序算法的时间复杂性是Ω（nlogn),那么他可能是基于比较算法中时间复杂性最低的算法？<br> 一个关于堆排序的插入和删除操作的时间复杂性的问题。（具体怎么问忘了）<br> 一个问KMP算法的时间复杂性的问题。</p>
+</li>
+<li><p>简答题（5 * 4分）</p>
+<p> 第一题：一个master定理的题目（很类似于ppt上的一道例题）应该是T(n) = 3T(n/4) + n^(1/2)</p>
+<p> 第二题：一个非常简单的复杂函数阶的证明，已知fx = O(g(x)), gx = o(hx),证明 fx = o(hx)</p>
+<p> 第三题：写出0-1背包问题的输入规模和时间复杂性</p>
+<p> 第四题：说明平摊分析的目的，以及任举一种平摊分析方法说明其大致思想，以及使用时需要注意的点</p>
+</li>
+<li><p>第一道大题（8分）</p>
+<p> 一个最大流的问题，给了一个最大流的图<br> 第一问要求画出某一步之后的余图<br> 第二问要求找出一条可以使流量增加1的増广路径<br> 第三问要求给出一个最小割</p>
+</li>
+<li><p>第二道大题（7分）</p>
+<p> 给出一个加权有向图，要求用A*算法把整个过程写一遍，并给出最后所得的最短路径。</p>
+</li>
+<li><p>第三道大题（20分）</p>
+<p> 分治算法的题，是作业题上的一道原题。<br> 原题如下：</p>
+<p> <img src="%E5%93%88%E5%B7%A5%E5%A4%A72019%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB/pic1.jpg" alt="题目"></p>
+<p> 分三个小问<br> 第一问写出算法思想<br> 第二问写伪代码<br> 第三问分析时间复杂度  </p>
+</li>
+<li><p>第四道大题（15分）</p>
+<p> 贪心算法的题。（这道题我真是无力吐槽，考场上没看懂怎么写，考完之后问了几个同学都说贪心思想和算法随便写的，且每个人写的都不一样，后来问老师那个题怎么写，老师说只要言之有理都算对，，，）</p>
+<p> 题目大概写一下吧，反正我觉得这题出的真差，你们复习的时候可以自己找点别的贪心算法的题做。</p>
+<p> 有一条环形公路，公路上有n个加油站，一辆油箱容量无限大的汽车在这条路上行驶，每个加油站所能给车加的最大油量为si，车在每两个加油站之间行驶耗得油为ci。要求写出一个贪心算法，让这个车选择一个加油站作为起始点，能够成功绕这个环形公路一圈并回到起始点，如果没有这样的加油站，则返回-1，有则返回所选择的起始加油站的编号。</p>
+<p> 第一问写贪心思想<br> 第二问证明贪心思想<br> 第三问伪代码<br> 第四问时间复杂度  </p>
+</li>
+<li><p>第五道大题（10分）</p>
+<p> 动态规划的题。比较简单，多做几道动态规划的题应该就可以做出来了。</p>
+<p> 题目大致如下：<br> 给定如图所示的一个树状图，每个节点上都标有该点权值，该树共有5层，从第一层的节点进入，从第五层的节点出来，要求找出一条长为4（即通过了5个节点）的路径，使得该条路径所经过的5个节点和最小。</p>
+<p> 图像大致如下：<br> <img src="%E5%93%88%E5%B7%A5%E5%A4%A72019%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB/pic2.jpg" alt="示意图"></p>
+<p> 第一问写优化子结构和子问题重叠性，并要求证明之。<br> 第二问写dp方程。（就是关键部分递归的方程）<br> 第三问写伪代码<br> 第四部分时间复杂度。</p>
+</li>
+</ol>
+<h2 id="总结及复习建议"><a href="#总结及复习建议" class="headerlink" title="总结及复习建议"></a>总结及复习建议</h2><p>试题格式是判断题加简答题加大题的形式，判断题的话主要还是考第一章和后面几章的基本知识点；简答题和大题中，master定理应该必考，最大流应该必考，给一个图用指定搜索算法写搜索过程应该必考，分治算法，贪心算法，动态规划这三章应该是必各出一道大题的。<br>建议平时作业题一定要做，出原题的可能性很大；平时作业题一定要动手写伪代码，不能只是会这道题的思想了就作罢，否则考场上很可能写不出伪代码，或者把伪代码写成c语言或java语言（这种情况会十分的浪费时间，且没有必要）；课件上的经典算法（尤其是最长公共子序列，01背包，任务安排问题）要熟悉到会写算法伪代码的程度。</p>
 
-More info: Writing
-Run server1$ hexo server
-
-Mo...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/27</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
     </article>
+    <!-- license  -->
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/18/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%B8%AD%E7%94%A8%E5%88%B0%E7%9A%84%E6%AF%94%E8%BE%83%E9%87%8D%E8%A6%81%E7%9A%84matlab%E5%8D%9A%E5%AE%A2/" >
-            
-                <span>数学建模中用到的比较重要的matlab博客</span>
-        </a>
-        <div class="abstract-content">
-            以下为本次数学建模国赛中参考到的比较重要的matlab教程，均真实可用：
-曲线拟合工具箱中四个误差量的解释
-曲线拟合工具箱中不同拟合方法的解释
-用函数句柄创建复合函数
-四阶龙格库塔（ode45）求解一阶常微分方程示例
-求解常微分方程组
-求解定积分与不定积分
-matlab极坐标图像绘制
-
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://fyunaru.cn">王金翼</a>
+            <p>原文链接：<a href="http://fyunaru.cn/2019/07/02/%E5%93%88%E5%B7%A5%E5%A4%A72019%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB/">http://fyunaru.cn/2019/07/02/%E5%93%88%E5%B7%A5%E5%A4%A72019%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB/</a>
+            <p>发表日期：<a href="http://fyunaru.cn/2019/07/02/%E5%93%88%E5%B7%A5%E5%A4%A72019%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB/">July 2nd 2019, 10:22:03 pm</a>
+            <p>更新日期：<a href="http://fyunaru.cn/2019/07/02/%E5%93%88%E5%B7%A5%E5%A4%A72019%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB/">August 4th 2019, 3:23:50 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "备忘录">备忘录</a>
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "matlab">matlab</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/07/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-7/" >
-            
-                <span>c++学习笔记_7</span>
-        </a>
-        <div class="abstract-content">
-            前言：本笔记所对应的课程为中国大学mooc中北京大学的程序设计与算法（三）C++面向对象程序设计，主要供自己复习使用，且本笔记建立在会使用c和java的基础上，只针对与c和java的不同来写
-输入输出和模板
-与输入输出流操作相关的类：istream, ostream, ifstream, ofstream, iostream, fstream
-标准流对象：cin, cout, cerr, clog
-输出重定向freopen(&quot;test.txt&quot;, &quot;w&quot;, stdout);//将标准输出重定向到test.txt文件freopen(&quot;tes...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/07</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "c++">c++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "学习笔记">学习笔记</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/06/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-6/" >
-            
-                <span>c++学习笔记_6</span>
-        </a>
-        <div class="abstract-content">
-            前言：本笔记所对应的课程为中国大学mooc中北京大学的程序设计与算法（三）C++面向对象程序设计，主要供自己复习使用，且本笔记建立在会使用c和java的基础上，只针对与c和java的不同来写
-多态虚函数和多态的基本概念
-虚函数形式：类中成员函数前加virtual关键字的成员函数就是虚函数。
-
-virtual关键字只用在函数声明前，在具体写函数体时不需要写virtual关键字（就像friend一样）
-
-构造函数和静态成员函数不能是虚函数。（但是析构函数可以）
-
-多态：这里的多态和java中的不太一样。定义：通过基类指针（或基类引用）去调用基类和派生类中的同名虚函数时，若基类指针引用的是一个...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/06</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "c++">c++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "学习笔记">学习笔记</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/06/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-5/" >
-            
-                <span>c++学习笔记_5</span>
-        </a>
-        <div class="abstract-content">
-            前言：本笔记所对应的课程为中国大学mooc中北京大学的程序设计与算法（三）C++面向对象程序设计，主要供自己复习使用，且本笔记建立在会使用c和java的基础上，只针对与c和java的不同来写
-继承继承和派生的基本概念
-c++中的继承和派生是同一概念，其基本定义和用法与java中的类似
-与java中相对应的，父类叫做基类，子类叫做派生类
-写法： “class 派生类名: public 基类名”
-派生类对象的内存空间中包含着基类对象，且基类对象的储存位置位于派生类对象新增的成员变量之前。
-
-继承关系和复合关系较简单，略。
-覆盖和保护成员
-覆盖：定义：派生类中可以定义一个和基类成员同名的成员。...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/06</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "c++">c++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "学习笔记">学习笔记</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/08/08/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-4/" >
-            
-                <span>c++学习笔记_4</span>
-        </a>
-        <div class="abstract-content">
-            前言：本笔记所对应的课程为中国大学mooc中北京大学的程序设计与算法（三）C++面向对象程序设计，主要供自己复习使用，且本笔记建立在会使用c和java的基础上，只针对与c和java的不同来写
-运算符重载运算符重载的基本概念
-目的：希望使对象也能用基本的运算符进行运算。本质上是函数重载。
-
-可以将运算符重载为普通函数，也可以重载为成员函数。
-
-一个运算符可以被多次重载，根据实参的具体类型决定调用哪个重载函数。
-
-格式：
- 返回值类型 operator运算符符号(参数表){
- }
-
-
-实例：
-1234567891011121314151617181920class Complex&#123;...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "c++">c++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "学习笔记">学习笔记</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/08/05/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3/" >
-            
-                <span>c++学习笔记_3</span>
-        </a>
-        <div class="abstract-content">
-            前言：本笔记所对应的课程为中国大学mooc中北京大学的程序设计与算法（三）C++面向对象程序设计，主要供自己复习使用，且本笔记建立在会使用c和java的基础上，只针对与c和java的不同来写
-类和对象提高this指针作用就是指向成员函数所做用的对象，注意它是一个指针。
-12345678class Complex&#123;    public:        double real, imag;        Complex AddOne()&#123;            this-&gt;real++;            return * this;        &#125;...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/05</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "c++">c++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "学习笔记">学习笔记</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/08/04/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/" >
-            
-                <span>c++学习笔记_2</span>
-        </a>
-        <div class="abstract-content">
-            前言：本笔记所对应的课程为中国大学mooc中北京大学的程序设计与算法（三）C++面向对象程序设计，主要供自己复习使用，且本笔记建立在会使用c和java的基础上，只针对与c和java的不同来写
-第二章 类和对象基础类和对象的基本概念补充
-某成员缺省关键字时，默认为private
-访问范围：在类的成员函数内部，能访问当前对象和其他同类对象的全部属性和函数；在类的成员函数外部，只能访问对象的public成员。
-同时使用缺省参数和重载时要注意避免二义性。
-
-构造函数如何创建一个对象：
-12345678910111213141516171819class Complex &#123;    pri...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "c++">c++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "学习笔记">学习笔记</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/08/04/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/" >
-            
-                <span>c++学习笔记_1</span>
-        </a>
-        <div class="abstract-content">
-            前言：本笔记所对应的课程为中国大学mooc中北京大学的程序设计与算法（三）C++面向对象程序设计，主要供自己复习使用，且本笔记建立在会使用c和java的基础上，只针对与c和java的不同来写
-第一章 从c到c++引用
-定义引用时一定要将其初始化成某个变量
-引用从一而终，引用一个变量后不可再引用另一个变量
-只能引用变量
-引用可以作为函数的返回值
-常引用，在前面加关键字const，不能用过常引用去修改其引用的内容，但是可以通过直接修改引用内容的方式修改
-常引用和引用不是同一种类型。引用可以赋值给常引用，常引用和常量不可以赋值给引用。
-
-示例：
-123456void swap(int &amp...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "c++">c++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "学习笔记">学习笔记</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/08/03/hexo%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fpath%E8%A2%AB%E5%88%A0%E9%99%A4%E6%80%8E%E4%B9%88%E5%8A%9E/" >
-            
-                <span>hexo的环境变量path被删除怎么办</span>
-        </a>
-        <div class="abstract-content">
-            这篇文章主要讲在path这一环境变量被删除的情况下，补上哪些环境变量才可以使hexo重新使用。
-前两天配置opencv的时候，不小心将环境变量中“path”这一项中的内容给覆盖掉了，导致以前辛苦配置的环境变量全部没了（关于我是怎么发现这一点的，其实是用hexo上传博客时出现不可用的情况，去网上搜了一下，才发现是环境变量的问题，检查了一下果然是path变量全没了）当时的唯一心情就是直接把这个破电脑换掉，然而现实是穷，所以又硬着头皮回来配环境变量。
-配置系统环境变量首先第一步是把和系统相关的环境变量加回来。关于这一步，我是采用直接复制同学电脑上的path环境变量的方法，然后依次检查哪个在我的...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "hexo">hexo</a>
-    
-</div>
-            
-        </div>
-    </article>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/07/08/%E5%93%88%E5%B7%A5%E5%A4%A72019%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" title= "哈工大2019软件构造">
+                    <div class="nextTitle">哈工大2019软件构造</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/07/01/windows%E4%B8%8Bhexo+github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title= "windows下用hexo+github搭建个人博客">
+                    <div class="prevTitle">windows下用hexo+github搭建个人博客</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &amp;#62;</a>
-    </nav>
     
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -815,6 +587,24 @@ c++中的继承和派生是同一概念，其基本定义和用法与java中的�
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#试卷构成"><span class="toc-number">2.</span> <span class="toc-text">试卷构成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结及复习建议"><span class="toc-number">3.</span> <span class="toc-text">总结及复习建议</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1176,6 +966,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
