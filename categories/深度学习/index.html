@@ -346,6 +346,154 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E4%BA%94/" >
+            
+                <span>深度学习实验五</span>
+        </a>
+        <div class="abstract-content">
+            实验要求基于PyTorch实现生成对抗网络
+
+拟合给定分布
+要求可视化训练过程
+
+环境配置实验环境如下：
+
+Win10 
+python3.8
+Anaconda3
+Cuda10.2 + cudnn v7
+GPU : NVIDIA GeForce MX250
+
+实验过程
+读取指定数据，制作dataset
+
+给定的数据是一个mat格式的文件，通过查询python读取mat文件的方式，发现其是一个类似于字典的结构，我们只需要其中’xx’所对应的部分。读取发现其为8192个散点，每个点为其在坐标轴中的坐标。如下图所示：
+
+
+我们所要做的即生成一些随机的点，去拟合这样一个类似于M的形状。
+使用sci...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "python">python</a>
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "深度学习">深度学习</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/" >
+            
+                <span>深度学习实验四</span>
+        </a>
+        <div class="abstract-content">
+            实验要求基于PyTorch实现循环神经网络
+
+对Sine函数进行预测（40s）
+  给定部分序列的值，进行后续序列值的预测
+
+基于影评数据进行文本情感预测（60s） 
+  基于影评文本，进行文本情感分析 （最后1000条数据用于测试）
+
+
+要求不可以使用nn.RNN，nn.LSTM等。需自行实现。
+实验环境实验环境如下：
+
+Win10 
+python3.8
+Anaconda3
+Cuda10.2 + cudnn v7
+GPU : NVIDIA GeForce MX250
+
+tensorboard的运行方法仍同上一实验：
+打开pycharm的terminal，输入tensorboard --...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/14</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "python">python</a>
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "深度学习">深度学习</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E4%B8%89/" >
+            
+                <span>深度学习实验三</span>
+        </a>
+        <div class="abstract-content">
+            实验要求
+基于PyTorch实现VGG/ResNet/SENet结构
+
+VGG要求Conv部分参照论文，可动态调整结构，测试结果不低于80%； ResNet要求基于残差块，参照论文，可动态调整，测试结果不低于80%； 分别在上述VGG和ResNet基础上，添加SE block。
+
+基于VGG进行训练方式对比（学习率、优化器(SGD与Adam)对比）
+
+基于VGG进行data augmentation对比分析（基于上述最佳模型，讨 论分析翻转、旋转、移位等操作对结果影响） 
+
+在Cifar-10数据集上进行验证
+
+
+实验环境实验环境如下：
+
+Win10 
+python3.8
+Anacond...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/05/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "python">python</a>
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "深度学习">深度学习</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E4%BA%8C/" >
             
                 <span>深度学习实验二</span>
@@ -939,9 +1087,138 @@ pytorch安装失败
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 31
+        Total : 40
         </div>
         <!-- search  -->
         
@@ -954,6 +1231,51 @@ pytorch安装失败
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/24</span><a class="archive-post-title" href= "/2020/10/24/python-sql-server-tkinter%E5%BC%80%E5%8F%91%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" >python+sql server+tkinter开发学生管理系统</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span><a class="archive-post-title" href= "/2020/10/19/vue%E6%9D%83%E9%99%90%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" >vue权限实现过程记录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/17</span><a class="archive-post-title" href= "/2020/09/17/javascript%E7%AC%94%E8%AE%B0/" >javascript笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span><a class="archive-post-title" href= "/2020/06/29/%E9%9B%80%E9%AD%82%E7%8E%89%E5%9C%BA%E5%A4%8D%E7%9B%98%E7%AC%94%E8%AE%B0/" >雀魂玉场复盘笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/02</span><a class="archive-post-title" href= "/2020/06/02/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E5%A4%8D%E4%B9%A0%E5%8F%82%E8%80%83%E5%8D%9A%E5%AE%A2/" >模式识别复习参考博客</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2020/05/27/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0-1/" >编译原理笔记-1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2020/05/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E4%BA%94/" >深度学习实验五</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/14</span><a class="archive-post-title" href= "/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/" >深度学习实验四</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/cpp-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B8%BA%E6%95%B0%E5%AD%97%E6%97%B6%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A4%84%E7%90%86/" >cpp 字符串转为数字时的类型处理</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1126,11 +1448,11 @@ pytorch安装失败
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="视听觉"><span class="iconfont-archer">&#xe606;</span>视听觉</span>
+        <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
     
         <span class="sidebar-tag-name" data-tags="哈工大"><span class="iconfont-archer">&#xe606;</span>哈工大</span>
     
-        <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
+        <span class="sidebar-tag-name" data-tags="视听觉"><span class="iconfont-archer">&#xe606;</span>视听觉</span>
     
         <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
     
@@ -1138,15 +1460,21 @@ pytorch安装失败
     
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
+        <span class="sidebar-tag-name" data-tags="接单"><span class="iconfont-archer">&#xe606;</span>接单</span>
+    
+        <span class="sidebar-tag-name" data-tags="vue"><span class="iconfont-archer">&#xe606;</span>vue</span>
+    
+        <span class="sidebar-tag-name" data-tags="spring"><span class="iconfont-archer">&#xe606;</span>spring</span>
+    
         <span class="sidebar-tag-name" data-tags="备忘录"><span class="iconfont-archer">&#xe606;</span>备忘录</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="期末"><span class="iconfont-archer">&#xe606;</span>期末</span>
     
-        <span class="sidebar-tag-name" data-tags="软件构造"><span class="iconfont-archer">&#xe606;</span>软件构造</span>
-    
         <span class="sidebar-tag-name" data-tags="matlab"><span class="iconfont-archer">&#xe606;</span>matlab</span>
+    
+        <span class="sidebar-tag-name" data-tags="软件构造"><span class="iconfont-archer">&#xe606;</span>软件构造</span>
     
         <span class="sidebar-tag-name" data-tags="月记"><span class="iconfont-archer">&#xe606;</span>月记</span>
     
@@ -1157,6 +1485,8 @@ pytorch安装失败
         <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
     
         <span class="sidebar-tag-name" data-tags="编译原理"><span class="iconfont-archer">&#xe606;</span>编译原理</span>
+    
+        <span class="sidebar-tag-name" data-tags="笔记"><span class="iconfont-archer">&#xe606;</span>笔记</span>
     
         <span class="sidebar-tag-name" data-tags="cpp"><span class="iconfont-archer">&#xe606;</span>cpp</span>
     
@@ -1193,15 +1523,17 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="视听觉"><span class="iconfont-archer">&#xe60a;</span>视听觉</span>
-    
         <span class="sidebar-category-name" data-categories="人工智能"><span class="iconfont-archer">&#xe60a;</span>人工智能</span>
+    
+        <span class="sidebar-category-name" data-categories="视听觉"><span class="iconfont-archer">&#xe60a;</span>视听觉</span>
     
         <span class="sidebar-category-name" data-categories="cpp"><span class="iconfont-archer">&#xe60a;</span>cpp</span>
     
         <span class="sidebar-category-name" data-categories="hexo"><span class="iconfont-archer">&#xe60a;</span>hexo</span>
     
         <span class="sidebar-category-name" data-categories="python"><span class="iconfont-archer">&#xe60a;</span>python</span>
+    
+        <span class="sidebar-category-name" data-categories="vue"><span class="iconfont-archer">&#xe60a;</span>vue</span>
     
         <span class="sidebar-category-name" data-categories="考试总结"><span class="iconfont-archer">&#xe60a;</span>考试总结</span>
     
@@ -1215,9 +1547,11 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="深度学习"><span class="iconfont-archer">&#xe60a;</span>深度学习</span>
     
-        <span class="sidebar-category-name" data-categories="编译原理"><span class="iconfont-archer">&#xe60a;</span>编译原理</span>
-    
         <span class="sidebar-category-name" data-categories="c"><span class="iconfont-archer">&#xe60a;</span>c</span>
+    
+        <span class="sidebar-category-name" data-categories="笔记"><span class="iconfont-archer">&#xe60a;</span>笔记</span>
+    
+        <span class="sidebar-category-name" data-categories="编译原理"><span class="iconfont-archer">&#xe60a;</span>编译原理</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

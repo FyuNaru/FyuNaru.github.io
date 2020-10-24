@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="default">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="王金翼">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="王金翼">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>深度学习实验四 · fyunaru&#39;s blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.png" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >FyuNaru&#39;s blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">深度学习实验四</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>FyuNaru's blog.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            深度学习实验四
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "python">python</a>
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "深度学习">深度学习</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2.2k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/05/14</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><p>基于PyTorch实现循环神经网络</p>
+<ul>
+<li><p>对Sine函数进行预测（40s）</p>
+<p>  给定部分序列的值，进行后续序列值的预测</p>
+</li>
+<li><p>基于影评数据进行文本情感预测（60s） </p>
+<p>  基于影评文本，进行文本情感分析 （最后1000条数据用于测试）</p>
+</li>
+</ul>
+<p>要求不可以使用nn.RNN，nn.LSTM等。需自行实现。</p>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>实验环境如下：</p>
+<ul>
+<li>Win10 </li>
+<li>python3.8</li>
+<li>Anaconda3</li>
+<li>Cuda10.2 + cudnn v7</li>
+<li>GPU : NVIDIA GeForce MX250</li>
+</ul>
+<p>tensorboard的运行方法仍同上一实验：</p>
+<p>打开pycharm的terminal，输入<code>tensorboard --logdir result</code></p>
+<p>然后在浏览器打开<code>localhost:6006</code>即可</p>
+<h2 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h2><p>首先需要自行实现RNN。实现的RNN代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里的RNN其实相当于一个rnncell</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RNN</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_size, hidden_size, output_size)</span>:</span></span><br><span class="line">        super(RNN, self).__init__()</span><br><span class="line">        self.input_size = input_size</span><br><span class="line">        self.hidden_size = hidden_size</span><br><span class="line">        self.output_size = output_size</span><br><span class="line">        self.in2hidden = nn.Linear(self.input_size + self.hidden_size, self.hidden_size)</span><br><span class="line">        self.hidden2out = nn.Linear(self.hidden_size, self.output_size)</span><br><span class="line">        self.tanH = nn.Tanh()</span><br><span class="line"></span><br><span class="line">    <span class="comment">##此处input的尺寸为[batch, 1 ,input_size]</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, input, h_t=None)</span>:</span></span><br><span class="line">        input = input.reshape(<span class="number">-1</span>, self.input_size)</span><br><span class="line">        <span class="keyword">if</span> h_t <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            h_t = Variable(torch.zeros(input.size(<span class="number">0</span>), self.hidden_size, dtype=torch.double))</span><br><span class="line">        h_t = self.tanH(self.in2hidden(torch.cat((input.double(), h_t), dim=<span class="number">1</span>)))</span><br><span class="line">        output = self.hidden2out(h_t)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> output, h_t</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SineRNN</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_size, hidden_size, output_size)</span>:</span></span><br><span class="line">        super(SineRNN, self).__init__()</span><br><span class="line">        self.rnn = RNN(input_size, hidden_size, output_size)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># input size 为[batch_size, seq_len, input_size]</span></span><br><span class="line">    <span class="comment"># 对sine的预测来说，为[97, 999, 1]</span></span><br><span class="line">    <span class="comment"># 在此处处理seq</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, input, future=<span class="number">0</span>)</span>:</span></span><br><span class="line">        outputs = []</span><br><span class="line">        h_t = <span class="literal">None</span></span><br><span class="line">        output = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">for</span> input_t <span class="keyword">in</span> input.chunk(input.size(<span class="number">1</span>), dim=<span class="number">1</span>):</span><br><span class="line">            output, h_t = self.rnn(input_t, h_t)</span><br><span class="line">            outputs += [output]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(future):</span><br><span class="line">            output, h_t = self.rnn(output, h_t)</span><br><span class="line">            outputs += [output]</span><br><span class="line">        outputs = torch.stack(outputs, <span class="number">1</span>).squeeze(<span class="number">2</span>)</span><br><span class="line">        <span class="comment"># outputs的size为[batch_size, seq_len, output_size]</span></span><br><span class="line">        <span class="keyword">return</span> outputs</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现思路：</strong></p>
+<p>RNN简单来讲就是在当前层中，结合当前输入与上次保留的信息，共同决定输出。因此实现rnn的关键就是将上次保留的信息储存，并在下次将其传入。</p>
+<p>在rnn中，结合当前输入与上次保留的信息的具体实现方法是，将两个数据横向拼接，成为一个新的tensor，然后对其进行一些列操作。</p>
+<p>这里我实现的RNN其实类似于一个rnncell，该层中只进行单个输入的处理，而将连续的seq的处理放到另一个类SineRNN中。使用时，如果是第一次进入，则需创建一个空的h_t；每次进行循环时，都将output储存，将更新后的h_t传入下一个模块中。</p>
+<p>由于本实验需要完成向后预测，因此SineRNN的输入还有一个future，表示即将向后预测的个数。在预测时，需要以上一次的预测值作为下一次的输入值。</p>
+<p>对sine函数的预测的主函数较为简单，具体细节不再赘述，这里参考了pytorch官方代码的做法，选取了前97个作为测试数据，选取了后三个作为测试数据，并将预测结果展示出来，以观察测试结果。</p>
+<p>关于优化器，直接选取的老师ppt上给出的LBFGS优化器，由于sin函数的预测较为简单，因此损失函数选取较为简单的MSELoss。</p>
+<hr>
+<p>其次需要实现情感分析的实验。首先需要了解输入文本的数据格式，以便于读入数据。</p>
+<p>首先先学习了Word Embedding的基础知识，了解了text/glove.6B.50d.txt文件是已经制作好的自然语言词汇的一种表示，是将自然语言表示的单词转换为计算机能够理解的向量或矩阵形式。这里只需直接按照字典的形式读出即可。</p>
+<p>接下来读取pos和neg文件，按照上面生成好的word2vec中的映射关系将自然语言转化为编码。将读出的数据进行划分，对于pos和neg来说，都各有5331条数据，这里各取后1000条为测试数据，其余的为训练数据，将其打包，并封装成dataset。</p>
+<p>额外需要注意的地方是，由于这里有的数据中句子的长度较短，为了统一处理，需要对较短的句子进行补零处理。一开始选择的是在句子的末尾补零，然而经过测试发现很难收敛，经群内同学提醒改为在句子开始处补零。原因在于如果零在末尾处，最后实际上是用零预测零，或用数预测零，这是没有意义的；而一开始的零却不会有任何影响。</p>
+<hr>
+<p>接下来使用了rnn进行情感分析的实验，事实上此时还没有发现在数据前补零的错误，感觉效果不好，于是去实现了lstm（后来发现rnn效果还是不错的）</p>
+<p>首先是实现lstm。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LSTM</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_size, hidden_size, output_size)</span>:</span></span><br><span class="line">        super(LSTM, self).__init__()</span><br><span class="line">        self.input_size = input_size</span><br><span class="line">        self.hidden_size = hidden_size</span><br><span class="line">        self.output_size = output_size</span><br><span class="line">        self.in2hidden = nn.Linear(self.input_size + self.hidden_size, self.hidden_size)</span><br><span class="line">        self.hidden2out = nn.Linear(self.hidden_size, self.output_size)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 分别对应忘记门，输入门和输出门</span></span><br><span class="line">        self.sigma1 = nn.Linear(self.input_size + self.hidden_size, self.hidden_size)</span><br><span class="line">        self.sigma2 = nn.Linear(self.input_size + self.hidden_size, self.hidden_size)</span><br><span class="line">        self.sigma3 = nn.Linear(self.input_size + self.hidden_size, self.hidden_size)</span><br><span class="line">        self.tanH = nn.Tanh()</span><br><span class="line">        self.softmax = nn.Softmax(dim=<span class="number">1</span>)</span><br><span class="line">        self.sigma = nn.Sigmoid()</span><br><span class="line"></span><br><span class="line">    <span class="comment">##此处input的尺寸为[batch, 1 ,input_size]</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, input, h_t=None, c_t = None)</span>:</span></span><br><span class="line">        <span class="comment"># 先转为[batch, input_size]</span></span><br><span class="line">        input = input.reshape(<span class="number">-1</span>, self.input_size)</span><br><span class="line">        <span class="keyword">if</span> h_t <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            h_t = Variable(torch.zeros(input.size(<span class="number">0</span>), self.hidden_size, dtype=torch.double)).cuda()</span><br><span class="line">        <span class="keyword">if</span> c_t <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            c_t = Variable(torch.zeros(input.size(<span class="number">0</span>), self.hidden_size, dtype=torch.double)).cuda()</span><br><span class="line"></span><br><span class="line">        x = torch.cat((input.double(), h_t), dim=<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 忘记门</span></span><br><span class="line">        f_t = self.sigma(self.sigma1(x))</span><br><span class="line">        <span class="comment"># 输入门</span></span><br><span class="line">        i_t = self.sigma(self.sigma2(x))</span><br><span class="line">        g_t = self.tanH(self.in2hidden(x))</span><br><span class="line">        <span class="comment"># 更新c_t</span></span><br><span class="line">        c_t = torch.mul(c_t, f_t) + torch.mul(i_t, g_t)</span><br><span class="line">        <span class="comment"># 输出门</span></span><br><span class="line">        o_t = self.sigma(self.sigma3(x))</span><br><span class="line">        h_t = torch.mul(o_t, c_t)</span><br><span class="line"></span><br><span class="line">        output = self.hidden2out(g_t)</span><br><span class="line">        <span class="keyword">return</span> output, h_t, c_t</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SenLSTM</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_size, hidden_size, output_size)</span>:</span></span><br><span class="line">        super(SenLSTM, self).__init__()</span><br><span class="line">        self.lstm = LSTM(input_size, hidden_size, output_size)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># input size 为[batch_size, seq_len, input_size]</span></span><br><span class="line">    <span class="comment"># 对sen的分析来说，为[128, 59, 50]</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, input, future=<span class="number">0</span>)</span>:</span></span><br><span class="line">        outputs = []</span><br><span class="line">        h_t = <span class="literal">None</span></span><br><span class="line">        c_t = <span class="literal">None</span></span><br><span class="line">        output = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">for</span> i, input_t <span class="keyword">in</span> enumerate(input.chunk(input.size(<span class="number">1</span>), dim=<span class="number">1</span>)):</span><br><span class="line">            output, h_t, c_t = self.lstm(input_t, h_t, c_t)</span><br><span class="line">            outputs += [output]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(future):</span><br><span class="line">            output, h_t, c_t = self.lstm(output, h_t, c_t)</span><br><span class="line">            outputs += [output]</span><br><span class="line">        outputs = torch.stack(outputs, <span class="number">1</span>).squeeze(<span class="number">2</span>)</span><br><span class="line">        <span class="comment"># outputs的size为[batch_size, seq_len, output_size]</span></span><br><span class="line">        <span class="keyword">return</span> outputs</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现思路：</strong></p>
+<p>首先先查看教程，学习了lstm的原理，发现实际上就是用三个SIGMOD函数来对数据的输入，输出和上一层的输入进行了一个比重的保留，只要理解数据流动，以及内部流动时的各个数据的size，还是比较好实现的。因此仿照RNN的结构实现了LSTM，同样将cell部分单独放在一个类中，将对seq的处理放在外层的类中。</p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>本次实验主要进行了以下几组实验或对比实验</p>
+<ol>
+<li>sine的预测</li>
+</ol>
+<p>这里我使用网络为RNN，使用的优化器为LBFGS，学习率设为0.8。由于在很少的epoch内即可完成收敛，因此epoch设置的较小。</p>
+<p>运行<code>train_sin.py</code>(绘图部分的函数直接使用pytorch官方文档中的函数) 实验结果如下图，大致在6个epoch时即可达到一个不错的结果。</p>
+<p><img src="/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/1.png" alt></p>
+<ol start="2">
+<li>情感分析中RNN与LSTM的对比</li>
+</ol>
+<p>两次实验均使用sgd优化器，学习率为0.1，epoch LSTM设置为30，RNN由于收敛更慢所以设置为50。</p>
+<p>运行tensorboard，可看到结果如下：</p>
+<p><img src="/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/rnn.png" alt></p>
+<p><img src="/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/lstm_sgd.png" alt></p>
+<p>经对比可以看到：首先是rnn一开始的收敛速度略慢与lstm，在之后的过程中，即使到了50个epoch，rnn才突破一次70，而lstm早在20多个epoch左右的时候就突破了70%的准确率。可以说明LSTM较RNN有更快的收敛速度。</p>
+<ol start="3">
+<li>情感分析中优化器的对比</li>
+</ol>
+<p>两次实验均使用LSTM，不同的是，一次使用Adam，学习率为0.0001，另一次为sgd，学习率为0.01（上图已给出）epoch均为30。</p>
+<p>Adam的结果如下：</p>
+<p><img src="/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/adam.png" alt></p>
+<p>经过比较可以看出，在起始阶段adam还是略慢于sgd的（大概3%左右）后期与sgd差别不大。因此对于此实验来说，更合适的优化器是sgd</p>
+<h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h2><p>此处列出本实验中主要参考的博客，供以后复习使用。</p>
+<p>最终是依据这一篇实现的LSTM（不过这篇博客仅仅是官方的LSTM教程的一个中文版而已）</p>
+<p><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">了解LSTM网络</a></p>
+<p>官方实现的rnn中一个很重要的参数：batch_first，原先不知道rnn中还有自动转化batch所在维度这么一个操作，不过最后改代码也没有用上这一点。</p>
+<p><a href="https://www.jianshu.com/p/41c15d301542" target="_blank" rel="noopener">Pytorch的参数“batch_first”的理解</a></p>
+<p>学习nlp的基本知识</p>
+<p><a href="https://blog.csdn.net/L_R_H000/article/details/81320286" target="_blank" rel="noopener">自然语言处理(NLP)之Word Embedding</a></p>
+<p>pytorch 矩阵点乘，这个主要是用在LSTM的实现中</p>
+<p><a href="https://blog.csdn.net/jizhidexiaoming/article/details/82502724?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.nonecase" target="_blank" rel="noopener">PyTorch 对应点相乘、矩阵相乘</a></p>
+<p>预测sine的主要是参考的pytorch的官方文档</p>
+<p><a href="https://github.com/pytorch/examples/blob/master/time_sequence_prediction/train.py" target="_blank" rel="noopener">examples/time_sequence_prediction/train.py</a></p>
+<p>pytorch中的cat函数，用于拼接两个tensor</p>
+<p><a href="https://www.cnblogs.com/JeasonIsCoding/p/10162356.html" target="_blank" rel="noopener">Pytorch中的torch.cat()函数</a></p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://fyunaru.cn">王金翼</a>
+            <p>原文链接：<a href="http://fyunaru.cn/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/">http://fyunaru.cn/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/</a>
+            <p>发表日期：<a href="http://fyunaru.cn/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/">May 14th 2020, 5:21:38 pm</a>
+            <p>更新日期：<a href="http://fyunaru.cn/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/">May 15th 2020, 6:13:04 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/05/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E4%BA%94/" title= "深度学习实验五">
+                    <div class="nextTitle">深度学习实验五</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/05/12/cpp-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B8%BA%E6%95%B0%E5%AD%97%E6%97%B6%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A4%84%E7%90%86/" title= "cpp 字符串转为数字时的类型处理">
+                    <div class="prevTitle">cpp 字符串转为数字时的类型处理</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:jywang1998@outlook.com" target="_blank" rel="noopener" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/FyuNaru" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/wechat.png" />
+                </span>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer qq" title=qq>
+                  
+                  <img class="profile-qr" src="/assets/qq.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/7471310" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+            
+                <a href="https://steamcommunity.com/profiles/76561198445929637/" class="iconfont-archer steam" target="_blank" title=steam></a>
+            
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验要求"><span class="toc-number">1.</span> <span class="toc-text">实验要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验环境"><span class="toc-number">2.</span> <span class="toc-text">实验环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验过程"><span class="toc-number">3.</span> <span class="toc-text">实验过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验结果"><span class="toc-number">4.</span> <span class="toc-text">实验结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考博客"><span class="toc-number">5.</span> <span class="toc-text">参考博客</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 40
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/24</span><a class="archive-post-title" href= "/2020/10/24/python-sql-server-tkinter%E5%BC%80%E5%8F%91%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" >python+sql server+tkinter开发学生管理系统</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span><a class="archive-post-title" href= "/2020/10/19/vue%E6%9D%83%E9%99%90%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" >vue权限实现过程记录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/17</span><a class="archive-post-title" href= "/2020/09/17/javascript%E7%AC%94%E8%AE%B0/" >javascript笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span><a class="archive-post-title" href= "/2020/06/29/%E9%9B%80%E9%AD%82%E7%8E%89%E5%9C%BA%E5%A4%8D%E7%9B%98%E7%AC%94%E8%AE%B0/" >雀魂玉场复盘笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/02</span><a class="archive-post-title" href= "/2020/06/02/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E5%A4%8D%E4%B9%A0%E5%8F%82%E8%80%83%E5%8D%9A%E5%AE%A2/" >模式识别复习参考博客</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2020/05/27/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0-1/" >编译原理笔记-1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2020/05/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E4%BA%94/" >深度学习实验五</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/14</span><a class="archive-post-title" href= "/2020/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E5%9B%9B/" >深度学习实验四</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2020/05/12/cpp-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B8%BA%E6%95%B0%E5%AD%97%E6%97%B6%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A4%84%E7%90%86/" >cpp 字符串转为数字时的类型处理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/07</span><a class="archive-post-title" href= "/2020/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E4%B8%89/" >深度学习实验三</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href= "/2020/05/04/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90/" >编译原理-语义分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E4%BA%8C/" >深度学习实验二</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/01</span><a class="archive-post-title" href= "/2020/05/01/%E6%9C%88%E8%AE%B0-20-05/" >月记-20-05</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2020/04/24/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C%E4%B8%80/" >深度学习实验一</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/06</span><a class="archive-post-title" href= "/2020/04/06/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84django%E9%A1%B9%E7%9B%AE/" >创建一个简单的django项目</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href= "/2020/03/12/%E6%9D%80%E6%88%AE%E5%B0%96%E5%A1%94-%E6%9C%BA%E5%99%A8%E4%BA%BA-%E8%BF%9B%E9%98%B60%E8%87%B3%E8%BF%9B%E9%98%B620%E6%89%93%E6%B3%95%E8%AE%B0%E5%BD%95/" >杀戮尖塔-机器人-进阶0至进阶20打法记录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span><a class="archive-post-title" href= "/2020/03/06/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E9%83%A8%E5%88%86poj%E8%A7%A3%E6%9E%90/" >程序设计与算法（三）部分poj解析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2020/02/19/%E6%9D%80%E6%88%AE%E5%B0%96%E5%A1%94-%E6%88%98%E5%A3%AB-%E8%BF%9B%E9%98%B60%E8%87%B3%E8%BF%9B%E9%98%B620%E6%89%93%E6%B3%95%E8%AE%B0%E5%BD%95/" >杀戮尖塔-战士-进阶0至进阶20打法记录</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/29</span><a class="archive-post-title" href= "/2019/12/29/%E6%9D%80%E6%88%AE%E5%B0%96%E5%A1%94-%E7%8C%8E%E4%BA%BA-%E8%BF%9B%E9%98%B60%E8%87%B3%E8%BF%9B%E9%98%B620%E6%89%93%E6%B3%95%E8%AE%B0%E5%BD%95/" >杀戮尖塔-猎人-进阶0至进阶20打法记录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/25</span><a class="archive-post-title" href= "/2019/12/25/HIT2019%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E9%AA%8C%E4%B8%89/" >HIT2019人工智能实验三</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/23</span><a class="archive-post-title" href= "/2019/12/23/HIT2019%E8%A7%86%E5%90%AC%E8%A7%89%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E8%A7%86%E8%A7%89%E5%AE%9E%E9%AA%8C%E4%BA%8C/" >HIT2019视听觉信号处理视觉实验二</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/23</span><a class="archive-post-title" href= "/2019/12/23/HIT2019%E8%A7%86%E5%90%AC%E8%A7%89%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E8%A7%86%E8%A7%89%E5%AE%9E%E9%AA%8C%E4%B8%89/" >HIT2019视听觉信号处理视觉实验三</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/10</span><a class="archive-post-title" href= "/2019/12/10/HIT2019%E8%A7%86%E5%90%AC%E8%A7%89%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E8%A7%86%E8%A7%89%E5%AE%9E%E9%AA%8C%E4%B8%80/" >HIT2019视听觉信号处理视觉实验一</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/01</span><a class="archive-post-title" href= "/2019/12/01/python%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%A4%B1%E8%B4%A5%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" >python安装第三方库失败的终极解决办法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/01</span><a class="archive-post-title" href= "/2019/12/01/%E6%9C%88%E8%AE%B0-19-12/" >周记_19_12</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/27</span><a class="archive-post-title" href= "/2019/11/27/hexo-g-%E7%94%9F%E6%88%90%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%A7%E5%B0%8F%E4%B8%BA0kb%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" >hexo g 生成的博客大小为0kb的解决方法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/27</span><a class="archive-post-title" href= "/2019/11/27/%E6%9C%88%E8%AE%B0-19-11/" >周记_19_11</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/18</span><a class="archive-post-title" href= "/2019/09/18/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%B8%AD%E7%94%A8%E5%88%B0%E7%9A%84%E6%AF%94%E8%BE%83%E9%87%8D%E8%A6%81%E7%9A%84matlab%E5%8D%9A%E5%AE%A2/" >数学建模中用到的比较重要的matlab博客</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span><a class="archive-post-title" href= "/2019/09/07/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-7/" >c++学习笔记_7</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-6/" >c++学习笔记_6</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-5/" >c++学习笔记_5</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/08</span><a class="archive-post-title" href= "/2019/08/08/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-4/" >c++学习笔记_4</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/05</span><a class="archive-post-title" href= "/2019/08/05/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3/" >c++学习笔记_3</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2019/08/04/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/" >c++学习笔记_2</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2019/08/04/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/" >c++学习笔记_1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href= "/2019/08/03/hexo%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fpath%E8%A2%AB%E5%88%A0%E9%99%A4%E6%80%8E%E4%B9%88%E5%8A%9E/" >hexo的环境变量path被删除怎么办</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/21</span><a class="archive-post-title" href= "/2019/07/21/%E5%A6%82%E4%BD%95%E5%86%99%E4%B8%80%E7%AF%87hexo%E5%8D%9A%E5%AE%A2%E5%B9%B6%E5%B0%86%E5%85%B6%E5%8F%91%E5%B8%83/" >如何写一篇hexo博客并将其发布</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2019/07/08/%E5%93%88%E5%B7%A5%E5%A4%A72019%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" >哈工大2019软件构造</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/02</span><a class="archive-post-title" href= "/2019/07/02/%E5%93%88%E5%B7%A5%E5%A4%A72019%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB/" >哈工大2019算法期末</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/01</span><a class="archive-post-title" href= "/2019/07/01/windows%E4%B8%8Bhexo+github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" >windows下用hexo+github搭建个人博客</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
+    
+        <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
+    
+        <span class="sidebar-tag-name" data-tags="哈工大"><span class="iconfont-archer">&#xe606;</span>哈工大</span>
+    
+        <span class="sidebar-tag-name" data-tags="视听觉"><span class="iconfont-archer">&#xe606;</span>视听觉</span>
+    
+        <span class="sidebar-tag-name" data-tags="c++"><span class="iconfont-archer">&#xe606;</span>c++</span>
+    
+        <span class="sidebar-tag-name" data-tags="学习笔记"><span class="iconfont-archer">&#xe606;</span>学习笔记</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="接单"><span class="iconfont-archer">&#xe606;</span>接单</span>
+    
+        <span class="sidebar-tag-name" data-tags="vue"><span class="iconfont-archer">&#xe606;</span>vue</span>
+    
+        <span class="sidebar-tag-name" data-tags="spring"><span class="iconfont-archer">&#xe606;</span>spring</span>
+    
+        <span class="sidebar-tag-name" data-tags="备忘录"><span class="iconfont-archer">&#xe606;</span>备忘录</span>
+    
+        <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="期末"><span class="iconfont-archer">&#xe606;</span>期末</span>
+    
+        <span class="sidebar-tag-name" data-tags="matlab"><span class="iconfont-archer">&#xe606;</span>matlab</span>
+    
+        <span class="sidebar-tag-name" data-tags="软件构造"><span class="iconfont-archer">&#xe606;</span>软件构造</span>
+    
+        <span class="sidebar-tag-name" data-tags="月记"><span class="iconfont-archer">&#xe606;</span>月记</span>
+    
+        <span class="sidebar-tag-name" data-tags="周记"><span class="iconfont-archer">&#xe606;</span>周记</span>
+    
+        <span class="sidebar-tag-name" data-tags="杂记"><span class="iconfont-archer">&#xe606;</span>杂记</span>
+    
+        <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
+    
+        <span class="sidebar-tag-name" data-tags="编译原理"><span class="iconfont-archer">&#xe606;</span>编译原理</span>
+    
+        <span class="sidebar-tag-name" data-tags="笔记"><span class="iconfont-archer">&#xe606;</span>笔记</span>
+    
+        <span class="sidebar-tag-name" data-tags="cpp"><span class="iconfont-archer">&#xe606;</span>cpp</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="人工智能"><span class="iconfont-archer">&#xe60a;</span>人工智能</span>
+    
+        <span class="sidebar-category-name" data-categories="视听觉"><span class="iconfont-archer">&#xe60a;</span>视听觉</span>
+    
+        <span class="sidebar-category-name" data-categories="cpp"><span class="iconfont-archer">&#xe60a;</span>cpp</span>
+    
+        <span class="sidebar-category-name" data-categories="hexo"><span class="iconfont-archer">&#xe60a;</span>hexo</span>
+    
+        <span class="sidebar-category-name" data-categories="python"><span class="iconfont-archer">&#xe60a;</span>python</span>
+    
+        <span class="sidebar-category-name" data-categories="vue"><span class="iconfont-archer">&#xe60a;</span>vue</span>
+    
+        <span class="sidebar-category-name" data-categories="考试总结"><span class="iconfont-archer">&#xe60a;</span>考试总结</span>
+    
+        <span class="sidebar-category-name" data-categories="matlab"><span class="iconfont-archer">&#xe60a;</span>matlab</span>
+    
+        <span class="sidebar-category-name" data-categories="月记"><span class="iconfont-archer">&#xe60a;</span>月记</span>
+    
+        <span class="sidebar-category-name" data-categories="周记"><span class="iconfont-archer">&#xe60a;</span>周记</span>
+    
+        <span class="sidebar-category-name" data-categories="杂记"><span class="iconfont-archer">&#xe60a;</span>杂记</span>
+    
+        <span class="sidebar-category-name" data-categories="深度学习"><span class="iconfont-archer">&#xe60a;</span>深度学习</span>
+    
+        <span class="sidebar-category-name" data-categories="c"><span class="iconfont-archer">&#xe60a;</span>c</span>
+    
+        <span class="sidebar-category-name" data-categories="笔记"><span class="iconfont-archer">&#xe60a;</span>笔记</span>
+    
+        <span class="sidebar-category-name" data-categories="编译原理"><span class="iconfont-archer">&#xe60a;</span>编译原理</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "王金翼"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
